@@ -41,3 +41,6 @@
 *.log
 hs_err_pid*
 replay_pid*
+
+# Contributor instructions are the sole tracked Markdown exception.
+!/AGENTS.md
