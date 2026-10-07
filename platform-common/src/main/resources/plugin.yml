@@ -1,0 +1,14 @@
+name: LogoutBodies
+version: '${version}'
+main: io.github.logoutbodies.platform.PlatformPlugin
+api-version: '1.21.11'
+description: 'Minecraft ${minecraft}'
+load: POSTWORLD
+commands:
+  logoutbodies:
+    description: Manage logout bodies and inspect recovery records
+    permission: logoutbodies.admin
+permissions:
+  logoutbodies.admin:
+    description: Manage logout bodies
+    default: op

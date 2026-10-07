@@ -1,24 +1,43 @@
-# Compiled class file
+# Track only production sources, runtime resources, build tooling and repository metadata.
+/*
+!/.gitignore
+!/.gitattributes
+!/LICENSE
+!/build.gradle.kts
+!/settings.gradle.kts
+!/gradle.properties
+!/gradlew
+!/gradlew.bat
+
+!/gradle/
+/gradle/*
+!/gradle/wrapper/
+/gradle/wrapper/*
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
+
+!/api/
+!/core/
+!/platform-common/
+!/platform-1_21_11/
+!/platform-26_1_2/
+!/platform-26_2/
+/api/*
+/core/*
+/platform-*/*
+!/*/build.gradle.kts
+!/*/src/
+/*/src/*
+!/*/src/main/
+
+# Documentation, tests and local/generated files stay on disk but outside Git.
+*.md
+*.markdown
+**/src/test/
+**/build/
+**/.gradle/
+**/node_modules/
 *.class
-
-# Log file
 *.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
