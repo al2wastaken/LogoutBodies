@@ -6,7 +6,7 @@
 - `core/` owns sessions, identity indexing, snapshots, chunk tickets, commands, configuration, and SQLite persistence.
 - `platform-common/src/main/java/` contains shared CraftBukkit/NMS implementations, compiled independently by `platform-1_21_11/`, `platform-26_1_2/`, and `platform-26_2/` against pinned Paper bundles.
 - Runtime resources live in `core/src/main/resources/` and `platform-common/src/main/resources/`.
-- Local tests use `core/src/test/java/`, `integration-probe/`, and `integration-tests/`. These, documentation, downloaded servers, and build outputs are intentionally ignored. Preserve this policy; `AGENTS.md` is an explicit documentation exception.
+- Local tests use `core/src/test/java/`, `integration-probe/`, and `integration-tests/`. These, supplementary documentation, downloaded servers, and build outputs are intentionally ignored. Preserve this policy; `AGENTS.md` and `README.md` are explicit documentation exceptions.
 
 ## Build, Test, and Development Commands
 

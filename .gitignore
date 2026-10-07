@@ -42,5 +42,6 @@
 hs_err_pid*
 replay_pid*
 
-# Contributor instructions are the sole tracked Markdown exception.
+# Public project documentation and contributor instructions are tracked exceptions.
 !/AGENTS.md
+!/README.md
