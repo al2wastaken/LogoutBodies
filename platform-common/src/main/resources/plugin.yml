@@ -8,6 +8,7 @@ commands:
   logoutbodies:
     description: Manage logout bodies and inspect recovery records
     permission: logoutbodies.admin
+    aliases: [adminbeden]
 permissions:
   logoutbodies.admin:
     description: Manage logout bodies
