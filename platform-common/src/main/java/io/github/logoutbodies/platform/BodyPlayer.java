@@ -41,7 +41,16 @@ final class BodyPlayer extends ServerPlayer {
         this.isRealPlayer = false;
         this.invulnerableTime = 0;
         this.getBukkitEntity().setCanPickupItems(false);
+        this.getBukkitEntity().setCollidable(false);
     }
+
+    @Override
+    public boolean isPushable() {
+        return false; // Other players must not be able to shove the body around.
+    }
+
+    @Override
+    public void push(Entity entity) {}
 
     @Override
     public void tick() {
