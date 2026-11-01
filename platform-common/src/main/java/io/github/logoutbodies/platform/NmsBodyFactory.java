@@ -17,11 +17,19 @@ import org.bukkit.craftbukkit.CraftServer;
 import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.Plugin;
 
 import java.util.UUID;
 
 final class NmsBodyFactory implements BodyFactory {
+    private static final String NPC_MARKER = "NPC";
     private final MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
+    private final Plugin plugin;
+
+    NmsBodyFactory(Plugin plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public Handle create(Player owner, PlayerStateSnapshot snapshot, DeathHandler deathHandler) {
@@ -66,6 +74,10 @@ final class NmsBodyFactory implements BodyFactory {
                 @Override
                 public void spawn() {
                     for (Player viewer : Bukkit.getOnlinePlayers()) showTo(viewer, player());
+                    // Auth plugins cancel damage to session-less players unless they are NPCs.
+                    // Player metadata is keyed by UUID, so remove() must clear this before the
+                    // owner can rejoin, or the real owner would pass as an NPC too.
+                    player().setMetadata(NPC_MARKER, new FixedMetadataValue(plugin, true));
                     body.level().addNewPlayer(body);
                     if (!body.valid)
                         throw new IllegalStateException(
@@ -76,6 +88,7 @@ final class NmsBodyFactory implements BodyFactory {
                 public void remove() {
                     if (removed) return;
                     removed = true;
+                    player().removeMetadata(NPC_MARKER, plugin);
                     // Removed entity references must no longer offer a second inventory/XP source.
                     body.getInventory().clearContent();
                     body.experienceLevel = 0;
